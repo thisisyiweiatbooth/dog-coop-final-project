@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   
   # Uncomment this if you want to force homo_sapiens to sign in before any other actions
   # before_action(:force_homo_sapien_sign_in)
+
+  def index
+  
+    render({ :template => "misc/homepage.html.erb"})
+  end
   
   def load_current_homo_sapien
     the_id = session[:homo_sapien_id]

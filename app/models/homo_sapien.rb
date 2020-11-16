@@ -25,5 +25,5 @@ class HomoSapien < ApplicationRecord
 
   validates(:username, { :uniqueness => true })
 
-  validates(:net_points, { :numericality => true })
+  # validates(:net_points, { :numericality => true })
 end
