@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Dog #<%= @the_dog.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/dogs">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_dog/<%= @the_dog.id %>">
+          Delete dog
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_dog.name %>
+      </dd>
+
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_dog.owner_id %>
+      </dd>
+
+      <dt>
+        Appointments count
+      </dt>
+      <dd>
+        <%= @the_dog.appointments_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_dog.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_dog.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit dog
+    </h2>
+
+    <form action="/modify_dog/<%= @the_dog.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_dog.name %>">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_dog.owner_id %>">
+      </div>
+
+      <div>
+        <label for="appointments_count_box">
+          Appointments count
+        </label>
+
+        <input type="text" id="appointments_count_box" name="query_appointments_count" value="<%= @the_dog.appointments_count %>">
+      </div>
+
+      <button>
+        Update dog
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

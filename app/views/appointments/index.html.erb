@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all appointments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new appointment
+    </h2>
+
+    <form action="/insert_appointment" method="post">
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date">
+      </div>
+
+      <div>
+        <label for="dog_id_box">
+          Dog
+        </label>
+
+        <input type="text" id="dog_id_box" name="query_dog_id">
+      </div>
+
+      <div>
+        <label for="dog_watcher_id_box">
+          Dog watcher
+        </label>
+
+        <input type="text" id="dog_watcher_id_box" name="query_dog_watcher_id">
+      </div>
+
+      <div>
+        <label for="points_earned_box">
+          Points earned
+        </label>
+
+        <input type="text" id="points_earned_box" name="query_points_earned">
+      </div>
+
+      <button>
+        Create appointment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Start date
+        </th>
+
+        <th>
+          End date
+        </th>
+
+        <th>
+          Dog
+        </th>
+
+        <th>
+          Dog watcher
+        </th>
+
+        <th>
+          Points earned
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_appointments.each do |an_appointment| %>
+      <tr>
+        <td>
+          <%= an_appointment.id %>
+        </td>
+
+        <td>
+          <%= an_appointment.start_date %>
+        </td>
+
+        <td>
+          <%= an_appointment.end_date %>
+        </td>
+
+        <td>
+          <%= an_appointment.dog_id %>
+        </td>
+
+        <td>
+          <%= an_appointment.dog_watcher_id %>
+        </td>
+
+        <td>
+          <%= an_appointment.points_earned %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_appointment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_appointment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/appointments/<%= an_appointment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

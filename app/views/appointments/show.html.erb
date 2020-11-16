@@ -1,0 +1,133 @@
+<div>
+  <div>
+    <h1>
+      Appointment #<%= @the_appointment.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/appointments">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_appointment/<%= @the_appointment.id %>">
+          Delete appointment
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Start date
+      </dt>
+      <dd>
+        <%= @the_appointment.start_date %>
+      </dd>
+
+      <dt>
+        End date
+      </dt>
+      <dd>
+        <%= @the_appointment.end_date %>
+      </dd>
+
+      <dt>
+        Dog
+      </dt>
+      <dd>
+        <%= @the_appointment.dog_id %>
+      </dd>
+
+      <dt>
+        Dog watcher
+      </dt>
+      <dd>
+        <%= @the_appointment.dog_watcher_id %>
+      </dd>
+
+      <dt>
+        Points earned
+      </dt>
+      <dd>
+        <%= @the_appointment.points_earned %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_appointment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_appointment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit appointment
+    </h2>
+
+    <form action="/modify_appointment/<%= @the_appointment.id %>"  method="post" >
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date"
+         value="<%= @the_appointment.start_date %>">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date"
+         value="<%= @the_appointment.end_date %>">
+      </div>
+
+      <div>
+        <label for="dog_id_box">
+          Dog
+        </label>
+
+        <input type="text" id="dog_id_box" name="query_dog_id" value="<%= @the_appointment.dog_id %>">
+      </div>
+
+      <div>
+        <label for="dog_watcher_id_box">
+          Dog watcher
+        </label>
+
+        <input type="text" id="dog_watcher_id_box" name="query_dog_watcher_id" value="<%= @the_appointment.dog_watcher_id %>">
+      </div>
+
+      <div>
+        <label for="points_earned_box">
+          Points earned
+        </label>
+
+        <input type="text" id="points_earned_box" name="query_points_earned" value="<%= @the_appointment.points_earned %>">
+      </div>
+
+      <button>
+        Update appointment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

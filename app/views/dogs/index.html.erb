@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all dogs
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new dog
+    </h2>
+
+    <form action="/insert_dog" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="appointments_count_box">
+          Appointments count
+        </label>
+
+        <input type="text" id="appointments_count_box" name="query_appointments_count">
+      </div>
+
+      <button>
+        Create dog
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Appointments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_dogs.each do |a_dog| %>
+      <tr>
+        <td>
+          <%= a_dog.id %>
+        </td>
+
+        <td>
+          <%= a_dog.name %>
+        </td>
+
+        <td>
+          <%= a_dog.owner_id %>
+        </td>
+
+        <td>
+          <%= a_dog.appointments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_dog.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_dog.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/dogs/<%= a_dog.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

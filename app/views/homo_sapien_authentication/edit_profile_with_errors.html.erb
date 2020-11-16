@@ -1,0 +1,66 @@
+<div >
+  <h5>
+    Edit Homo Sapien Account
+  </h5>
+
+  <% if @homo_sapien.errors.any? %>
+  <% @homo_sapien.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+  <% end %>
+  <div>
+    <form action="/modify_homo_sapien" method="post">
+              
+      <div>
+        <label for="email_box">Email</label>
+          
+        <input id="email_box" name="query_email" value="<%= @current_homo_sapien.email %>">
+          
+      </div>
+                                    
+      <div>
+        <label for="username_box">Username</label>
+          
+        <input id="username_box" name="query_username" value="<%= @current_homo_sapien.username %>">
+          
+      </div>
+                      
+      <div>
+        <label for="net_points_box">Net points</label>
+          
+        <input id="net_points_box" name="query_net_points" value="<%= @current_homo_sapien.net_points %>">
+          
+      </div>
+                      
+      <div>
+        <label for="dogs_count_box">Dogs count</label>
+          
+        <input id="dogs_count_box" name="query_dogs_count" value="<%= @current_homo_sapien.dogs_count %>">
+          
+      </div>
+                      
+      <div>
+        <label for="appointments_count_box">Appointments count</label>
+          
+        <input id="appointments_count_box" name="query_appointments_count" value="<%= @current_homo_sapien.appointments_count %>">
+          
+      </div>
+              
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a new password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your new password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>
