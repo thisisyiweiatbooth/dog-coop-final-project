@@ -26,4 +26,8 @@ class HomoSapien < ApplicationRecord
   validates(:username, { :uniqueness => true })
 
   # validates(:net_points, { :numericality => true })
+
+  # def dog
+  #   return Dog.where({ :owner_id => self.id}).at(0)
+  # end
 end

@@ -22,8 +22,13 @@ class AppointmentsController < ApplicationController
     the_appointment.start_date = params.fetch("query_start_date")
     the_appointment.end_date = params.fetch("query_end_date")
     the_appointment.dog_id = params.fetch("query_dog_id")
-    the_appointment.dog_watcher_id = params.fetch("query_dog_watcher_id")
-    the_appointment.points_earned = params.fetch("query_points_earned")
+    # appt_dog_name = params.fetch("query_dog_name")
+
+    # matching_dogs = Dog.where({ :name => appt_dog_name}).at(0)
+    # matching_dogs_id = matching_dogs.id
+
+    # the_appointment.dog_watcher_id = params.fetch("query_dog_watcher_id")
+    # the_appointment.points_earned = params.fetch("query_points_earned")
 
     if the_appointment.valid?
       the_appointment.save

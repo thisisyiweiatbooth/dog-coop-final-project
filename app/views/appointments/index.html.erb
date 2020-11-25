@@ -31,28 +31,20 @@
         <input type="datetime-local" id="end_date_box" name="query_end_date">
       </div>
 
-      <div>
-        <label for="dog_name_box">
-          Dog
-        </label>
 
-        <input type="text" id="dog_name_box" name="query_name_id">
-      </div>
+<select name="query_dog_id" id="dogs">
 
-      <div>
-        <label for="dog_watcher_id_box">
-          Dog watcher
-        </label>
+<% @current_homo_sapien.dogs.each do |a_dog| %>
+  <option value=<%= a_dog.id %>><%=a_dog.name %></option>
+ 
+<% end  %> 
 
-        <input type="text" id="dog_watcher_id_box" name="query_dog_watcher_id">
-      </div>
+</select>
+
+  
 
       <div>
-        <label for="points_earned_box">
-          Points earned
-        </label>
-
-        <input type="text" id="points_earned_box" name="query_points_earned">
+      Points required = (End date - Beginning Date)*100
       </div>
 
       <button>
@@ -67,9 +59,6 @@
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Start date
@@ -77,6 +66,10 @@
 
         <th>
           End date
+        </th>
+
+        <th>
+        # days
         </th>
 
         <th>
@@ -105,20 +98,22 @@
 
       <% @list_of_appointments.each do |an_appointment| %>
       <tr>
+
+
         <td>
-          <%= an_appointment.id %>
+          <%= an_appointment.start_date.strftime("%b. %e, %Y %I:%M%P") %>
         </td>
 
         <td>
-          <%= an_appointment.start_date %>
+          <%= an_appointment.end_date.strftime("%b. %e, %Y %I:%M%P") %>
         </td>
 
         <td>
-          <%= an_appointment.end_date %>
+        <%= an_appointment.start_date.day - an_appointment.end_date.day %>
         </td>
 
         <td>
-          <%= an_appointment.dog_id %>
+          <%= an_appointment.dog.name %>
         </td>
 
         <td>
