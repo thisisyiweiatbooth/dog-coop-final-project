@@ -23,21 +23,21 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <div>
-        <label for="owner_id_box">
-          Owner
+      <%# <div>
+        <label for="owner_username_box">
+          Owner Username
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id">
-      </div>
+        <input type="text" id="owner_username_box" name="query_owner_username">
+      </div> %>
 
-      <div>
+      <%# <div>
         <label for="appointments_count_box">
           Appointments count
         </label>
 
         <input type="text" id="appointments_count_box" name="query_appointments_count">
-      </div>
+      </div> %>
 
       <button>
         Create dog
@@ -51,9 +51,9 @@
   <div>
     <table>
       <tr>
-        <th>
+        <%# <th>
           ID
-        </th>
+        </th> %>
 
         <th>
           Name
@@ -67,13 +67,13 @@
           Appointments count
         </th>
 
-        <th>
+        <%# <th>
           Created at
-        </th>
+        </th> %>
 
-        <th>
+        <%# <th>
           Updated at
-        </th>
+        </th> %>
 
         <th>
         </th>
@@ -81,27 +81,27 @@
 
       <% @list_of_dogs.each do |a_dog| %>
       <tr>
-        <td>
+        <%# <td>
           <%= a_dog.id %>
-        </td>
+        <%# </td> % %>
 
         <td>
           <%= a_dog.name %>
         </td>
 
         <td>
-          <%= a_dog.owner_id %>
+          <%= a_dog.owner.username %>
         </td>
 
         <td>
           <%= a_dog.appointments_count %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(a_dog.created_at) %> ago
+        <td> 
+          <% time_ago_in_words(a_dog.created_at) %> 
         </td>
         <td>
-          <%= time_ago_in_words(a_dog.updated_at) %> ago
+          <% time_ago_in_words(a_dog.updated_at) %>
         </td>
 
         <td>

@@ -20,4 +20,7 @@ class Dog < ApplicationRecord
 
   validates(:name, { :presence => true })
   
+  def owner
+    return HomoSapien.where({ :id => self.owner_id}).at(0)
+  end
 end

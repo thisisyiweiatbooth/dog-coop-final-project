@@ -30,7 +30,7 @@
         Owner
       </dt>
       <dd>
-        <%= @the_dog.owner_id %>
+        <%= @the_dog.owner.username %>
       </dd>
 
       <dt>
@@ -40,19 +40,19 @@
         <%= @the_dog.appointments_count %>
       </dd>
 
-      <dt>
+      <%# <dt>
         Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_dog.created_at) %> ago
-      </dd>
+      </dt> %>
+      <%# <dd>
+        <% time_ago_in_words(@the_dog.created_at) %> 
+      <%# </dd> %> 
 
-      <dt>
+      <%# <dt>
         Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_dog.updated_at) %> ago
-      </dd>
+      </dt> %>
+      <%# <dd>
+        <%= time_ago_in_words(@the_dog.updated_at) %> 
+      <%# </dd> %> 
     </dl>
   </div>
 </div>
@@ -76,19 +76,11 @@
       </div>
 
       <div>
-        <label for="owner_id_box">
+        <label for="owner_username_box">
           Owner
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_dog.owner_id %>">
-      </div>
-
-      <div>
-        <label for="appointments_count_box">
-          Appointments count
-        </label>
-
-        <input type="text" id="appointments_count_box" name="query_appointments_count" value="<%= @the_dog.appointments_count %>">
+        <input type="text" id="owner_username_box" name="query_owner_username" value="<%= @the_dog.owner.username %>">
       </div>
 
       <button>
