@@ -31,21 +31,19 @@
         <input type="datetime-local" id="end_date_box" name="query_end_date">
       </div>
 
-
-<select name="query_dog_id" id="dogs">
-
-<% @current_homo_sapien.dogs.each do |a_dog| %>
-  <option value=<%= a_dog.id %>><%=a_dog.name %></option>
- 
-<% end  %> 
-
-</select>
-
-  
-
       <div>
-      Points required = (End date - Beginning Date)*100
+
+      <select name="query_dog_id" id="dogs">
+
+      <% @current_homo_sapien.dogs.each do |a_dog| %>
+        <option value=<%= a_dog.id %>><%=a_dog.name %></option>
+      
+      <% end  %> 
+
+      </select>
+
       </div>
+
 
       <button>
         Create appointment
@@ -59,6 +57,9 @@
   <div>
     <table>
       <tr>
+        <th>
+          Dog
+        </th>
 
         <th>
           Start date
@@ -73,18 +74,6 @@
         </th>
 
         <th>
-          Dog
-        </th>
-
-        <th>
-          Dog watcher
-        </th>
-
-        <th>
-          Points earned
-        </th>
-
-        <th>
           Created at
         </th>
 
@@ -93,12 +82,19 @@
         </th>
 
         <th>
+          Dog watcher
+        </th>
+
+        <th>
         </th>
       </tr>
 
       <% @list_of_appointments.each do |an_appointment| %>
       <tr>
-
+        
+        <td>
+          <%= an_appointment.dog.name %>
+        </td>
 
         <td>
           <%= an_appointment.start_date.strftime("%b. %e, %Y %I:%M%P") %>
@@ -109,19 +105,7 @@
         </td>
 
         <td>
-        <%= an_appointment.start_date.day - an_appointment.end_date.day %>
-        </td>
-
-        <td>
-          <%= an_appointment.dog.name %>
-        </td>
-
-        <td>
-          <%= an_appointment.dog_watcher_id %>
-        </td>
-
-        <td>
-          <%= an_appointment.points_earned %>
+        <%= an_appointment.end_date.day - an_appointment.start_date.day %>
         </td>
 
         <td>
@@ -129,6 +113,22 @@
         </td>
         <td>
           <%= time_ago_in_words(an_appointment.updated_at) %> ago
+        </td>
+
+        <td>
+          <% if an_appointment.dog_watcher_id == nil %>
+          
+      <button type="submit" action="/appointments">
+        Sign up to watch!
+
+      </button>
+
+      <% else %>
+
+      <%= a_dog.dog_watcher_id %>
+
+       <% end  %> 
+
         </td>
 
         <td>
