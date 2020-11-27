@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Dog #<%= @the_dog.id %> details
+      More details about <%= @the_dog.name %>
     </h1>
 
     <div>
@@ -11,12 +11,16 @@
         </a>
       </div>
 
+    <% if @current_homo_sapien.id == @the_dog.owner_id%>
+
       <div>
         <a href="/delete_dog/<%= @the_dog.id %>">
           Delete dog
         </a>
       </div>
     </div>
+
+    <% end %>
 
     <dl>
       <dt>
@@ -52,8 +56,9 @@
   </div>
 </div>
 
-<hr>
+<% if @current_homo_sapien.id == @the_dog.owner_id%>
 
+<hr>
 
 <div>
   <div>
@@ -84,5 +89,7 @@
     </form>
   </div>
 </div>
+
+<% end %>
 
 <hr>
