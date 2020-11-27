@@ -5,6 +5,7 @@
 #  id                 :integer          not null, primary key
 #  appointments_count :integer
 #  name               :string
+#  photo              :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  owner_id           :integer
@@ -23,4 +24,8 @@ class Dog < ApplicationRecord
   def owner
     return HomoSapien.where({ :id => self.owner_id}).at(0)
   end
+end
+
+class Dog < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
 end

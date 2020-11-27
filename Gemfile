@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem "carrierwave"
+gem "cloudinary"
+
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'http'

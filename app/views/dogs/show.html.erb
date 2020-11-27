@@ -27,6 +27,13 @@
       </dd>
 
       <dt>
+        Photo
+      </dt>
+      <dd>
+        <img src="<%= @the_dog.photo %>" class="img-responsive">
+      </dd>
+
+      <dt>
         Owner
       </dt>
       <dd>
@@ -40,19 +47,7 @@
         <%= @the_dog.appointments_count %>
       </dd>
 
-      <%# <dt>
-        Created at
-      </dt> %>
-      <%# <dd>
-        <% time_ago_in_words(@the_dog.created_at) %> 
-      <%# </dd> %> 
 
-      <%# <dt>
-        Updated at
-      </dt> %>
-      <%# <dd>
-        <%= time_ago_in_words(@the_dog.updated_at) %> 
-      <%# </dd> %> 
     </dl>
   </div>
 </div>
@@ -66,7 +61,7 @@
       Edit dog
     </h2>
 
-    <form action="/modify_dog/<%= @the_dog.id %>"  method="post" >
+    <form action="/modify_dog/<%= @the_dog.id %>"  method="post" class="form-horizontal" enctype="multipart/form-data">
       <div>
         <label for="name_box">
           Name
@@ -76,11 +71,11 @@
       </div>
 
       <div>
-        <label for="owner_username_box">
-          Owner
+        <label for="photo">
+          Photo
         </label>
 
-        <input type="text" id="owner_username_box" name="query_owner_username" value="<%= @the_dog.owner.username %>">
+        <input type="file" id="photo" name="photo" class="form-control">
       </div>
 
       <button>

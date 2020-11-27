@@ -21,6 +21,7 @@ class DogsController < ApplicationController
     the_dog = Dog.new
     the_dog.name = params.fetch("query_name")
     the_dog.owner_id = @current_homo_sapien.id
+    the_dog.photo = params.fetch(:photo)
     # the_dog.owner_id = params.fetch("query_owner_username")
     # the_dog_owner_id = the_dog.owner_id
     # matching_owners = HomoSapien.where({ :id => the_dog_owner_id}).at(0)
@@ -40,8 +41,9 @@ class DogsController < ApplicationController
     the_dog = Dog.where({ :id => the_id }).at(0)
 
     the_dog.name = params.fetch("query_name")
-    the_dog.owner_id = params.fetch("query_owner_id")
-    the_dog.appointments_count = params.fetch("query_appointments_count")
+    # the_dog.owner_id = params.fetch("query_owner_id")
+    # the_dog.appointments_count = params.fetch("query_appointments_count")
+    the_dog.photo = params.fetch(:photo)
 
     if the_dog.valid?
       the_dog.save

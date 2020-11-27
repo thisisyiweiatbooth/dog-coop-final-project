@@ -14,7 +14,7 @@
       Add a new dog
     </h2>
 
-    <form action="/insert_dog" method="post">
+    <form action="/insert_dog" method="post" class="form-horizontal" enctype="multipart/form-data">
       <div>
         <label for="name_box">
           Name
@@ -23,21 +23,13 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <%# <div>
-        <label for="owner_username_box">
-          Owner Username
+      <div>
+        <label for="photo">
+          Photo
         </label>
 
-        <input type="text" id="owner_username_box" name="query_owner_username">
-      </div> %>
-
-      <%# <div>
-        <label for="appointments_count_box">
-          Appointments count
-        </label>
-
-        <input type="text" id="appointments_count_box" name="query_appointments_count">
-      </div> %>
+        <input type="file" id="photo" name="photo" class="form-control">
+      </div>
 
       <button>
         Create dog
@@ -51,12 +43,13 @@
   <div>
     <table>
       <tr>
-        <%# <th>
-          ID
-        </th> %>
 
         <th>
           Name
+        </th>
+
+        <th>
+          Photo
         </th>
 
         <th>
@@ -67,13 +60,6 @@
           Appointments count
         </th>
 
-        <%# <th>
-          Created at
-        </th> %>
-
-        <%# <th>
-          Updated at
-        </th> %>
 
         <th>
         </th>
@@ -81,14 +67,15 @@
 
       <% @list_of_dogs.each do |a_dog| %>
       <tr>
-        <%# <td>
-          <%= a_dog.id %>
-        <%# </td> % %>
-
+   
         <td>
           <%= a_dog.name %>
         </td>
 
+        <td>
+          <img src="<%= a_dog.photo %>" class="img-responsive">
+        </td>
+        
         <td>
           <%= a_dog.owner.username %>
         </td>

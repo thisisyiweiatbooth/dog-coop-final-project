@@ -19,9 +19,6 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
- config.time_zone = 'Central Time (US & Canada)'
-config.active_record.default_timezone = :local
-  
 
 module FinalProject
   class Application < Rails::Application
