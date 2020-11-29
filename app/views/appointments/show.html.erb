@@ -11,7 +11,7 @@
         </a>
       </div>
 
-    <%# <% if @current_homo_sapien.id == @the_appointment.dog_owner.id %> %>
+    <% if @current_homo_sapien.id == @the_appointment.dog_owner.id %>
 
       <div>
         <a href="/delete_appointment/<%= @the_appointment.id %>">
@@ -19,7 +19,7 @@
         </a>
       </div>
 
-    <%# <% end %> %>
+    <% end %>
 
     </div>
 
@@ -42,21 +42,21 @@
         Dog
       </dt>
       <dd>
-        <%= @the_appointment.dog_id %>
+        <%= @the_appointment.dog_in_appt.name %>
+      </dd>
+
+      <dt>
+        Dog owner
+      </dt>
+      <dd>
+        <%= @the_appointment.dog_owner.username %>
       </dd>
 
       <dt>
         Dog watcher
       </dt>
       <dd>
-        <%= @the_appointment.dog_watcher_id %>
-      </dd>
-
-      <dt>
-        Points earned
-      </dt>
-      <dd>
-        <%= @the_appointment.points_earned %>
+        <%= @the_appointment.dog_watcher.username %>
       </dd>
 
       <dt>
@@ -76,13 +76,13 @@
   </div>
 </div>
 
+<% if @current_homo_sapien.id == @the_appointment.dog_owner.id %>
 <hr>
-
 
 <div>
   <div>
     <h2>
-      Edit appointment
+      Edit appointment request
     </h2>
 
     <form action="/modify_appointment/<%= @the_appointment.id %>"  method="post" >
@@ -105,27 +105,14 @@
       </div>
 
       <div>
-        <label for="dog_id_box">
-          Dog
-        </label>
+      <select name="query_dog_id" id="dogs">
 
-        <input type="text" id="dog_id_box" name="query_dog_id" value="<%= @the_appointment.dog_id %>">
-      </div>
+      <% @current_homo_sapien.dogs.each do |a_dog| %>
+        <option value=<%= a_dog.id %>><%=a_dog.name %></option>
+      
+      <% end  %> 
 
-      <div>
-        <label for="dog_watcher_id_box">
-          Dog watcher
-        </label>
-
-        <input type="text" id="dog_watcher_id_box" name="query_dog_watcher_id" value="<%= @the_appointment.dog_watcher_id %>">
-      </div>
-
-      <div>
-        <label for="points_earned_box">
-          Points earned
-        </label>
-
-        <input type="text" id="points_earned_box" name="query_points_earned" value="<%= @the_appointment.points_earned %>">
+      </select>
       </div>
 
       <button>
@@ -134,5 +121,7 @@
     </form>
   </div>
 </div>
+
+<% end %>
 
 <hr>

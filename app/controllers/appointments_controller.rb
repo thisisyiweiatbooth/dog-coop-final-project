@@ -45,8 +45,7 @@ class AppointmentsController < ApplicationController
     the_appointment.start_date = params.fetch("query_start_date")
     the_appointment.end_date = params.fetch("query_end_date")
     the_appointment.dog_id = params.fetch("query_dog_id")
-    the_appointment.dog_watcher_id = params.fetch("query_dog_watcher_id")
-    the_appointment.points_earned = params.fetch("query_points_earned")
+
 
     if the_appointment.valid?
       the_appointment.save
@@ -55,6 +54,20 @@ class AppointmentsController < ApplicationController
       redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
     end
   end
+
+  def signup_to_watch
+    the_id = params.fetch("path_id")
+    the_appointment = Appointment.where({ :id => the_id }).at(0)
+    the_appointment.dog_watcher_id = @current_homo_sapien.id
+
+    if the_appointment.valid?
+      the_appointment.save
+      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment updated successfully."} )
+    else
+      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
+    end
+  end
+
 
   def destroy
     the_id = params.fetch("path_id")

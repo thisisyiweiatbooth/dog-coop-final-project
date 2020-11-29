@@ -26,6 +26,14 @@ class Appointment < ApplicationRecord
     return HomoSapien.where({ :id => dog_in_appt.owner_id}).at(0)
   end
 
+  def dog_watcher
+    return HomoSapien.where({ :id => self.dog_watcher_id}).at(0)
+  end
+
+  def dog_in_appt
+    return Dog.where({ :id => self.dog_id}).at(0)
+  end
+
   # validates(:dog_watcher_id, { :numericality => true })
 
   # def dog

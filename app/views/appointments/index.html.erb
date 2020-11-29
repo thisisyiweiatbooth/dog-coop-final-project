@@ -60,6 +60,10 @@
         <th>
           Dog
         </th>
+        
+        <th>
+          Dog owner
+        </th>
 
         <th>
           Start date
@@ -97,6 +101,10 @@
         </td>
 
         <td>
+          <%= an_appointment.dog_owner.username%>
+        </td>
+
+        <td>
           <%= an_appointment.start_date.strftime("%b. %e, %Y %I:%M%P") %>
         </td>
 
@@ -116,16 +124,16 @@
         </td>
 
         <td>
-          <% if an_appointment.dog_watcher_id == nil %>
+      <% if an_appointment.dog_watcher_id == nil %>
           
-      <button type="submit" action="/appointments">
+      <button type="submit" action="/signup_to_watch/:path_id">
         Sign up to watch!
 
       </button>
 
       <% else %>
 
-      <%= a_dog.dog_watcher_id %>
+      <%= an_appointment.dog_watcher.username %>
 
        <% end  %> 
 
