@@ -67,9 +67,9 @@ class HomoSapienAuthenticationController < ApplicationController
     @homo_sapien.password = params.fetch("query_password")
     @homo_sapien.password_confirmation = params.fetch("query_password_confirmation")
     @homo_sapien.username = params.fetch("query_username")
-    @homo_sapien.net_points = params.fetch("query_net_points")
-    @homo_sapien.dogs_count = params.fetch("query_dogs_count")
-    @homo_sapien.appointments_count = params.fetch("query_appointments_count")
+    # @homo_sapien.net_points = params.fetch("query_net_points")
+    # @homo_sapien.dogs_count = params.fetch("query_dogs_count")
+    # @homo_sapien.appointments_count = params.fetch("query_appointments_count")
     
     if @homo_sapien.valid?
       @homo_sapien.save

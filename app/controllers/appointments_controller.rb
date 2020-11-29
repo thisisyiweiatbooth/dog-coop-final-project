@@ -68,6 +68,19 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def cancel_watch
+    the_id = params.fetch("path_id")
+    the_appointment = Appointment.where({ :id => the_id }).at(0)
+    the_appointment.dog_watcher_id = nil
+
+    if the_appointment.valid?
+      the_appointment.save
+      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment updated successfully."} )
+    else
+      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
+    end
+  end
+
 
   def destroy
     the_id = params.fetch("path_id")

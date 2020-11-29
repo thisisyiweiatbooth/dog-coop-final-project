@@ -20,6 +20,15 @@
 <%= notice %>
 <%= alert %>
 
+<% if @current_homo_sapien != nil %>
+You are currently signed in as <%= @current_homo_sapien.username %>
+
+<% else %>
+
+You are currently not signed in.
+
+<% end %>
+
   <ul>
     <li>
       <a href="/">Home</a>
@@ -33,6 +42,8 @@
       <a href="/dogs">Dogs</a>
     </li>
 
+  <% if @current_homo_sapien == nil %>
+
     <li>
       <a href="/homo_sapien_sign_up">Sign up</a>
     </li>
@@ -40,10 +51,17 @@
     <li>
       <a href="/homo_sapien_sign_in">Sign in</a>
     </li>
+  
+  <% else %>
+    <li>
+      <a href="/edit_homo_sapien_profile">Edit user profile</a>
+    </li>
     
     <li>
       <a href="/homo_sapien_sign_out">Sign out</a>
     </li>
+  
+  <% end %>
 
 
   </ul>

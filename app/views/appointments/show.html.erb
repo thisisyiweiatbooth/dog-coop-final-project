@@ -56,7 +56,17 @@
         Dog watcher
       </dt>
       <dd>
+        <% if @the_appointment.dog_watcher != nil %>
         <%= @the_appointment.dog_watcher.username %>
+
+        <% else %>
+
+        None yet! 
+        <a href="/signup_to_watch/:path_id">
+        Sign up to watch.
+        </a>
+
+        <% end %>
       </dd>
 
       <dt>
@@ -125,3 +135,16 @@
 <% end %>
 
 <hr>
+
+<% if @the_appointment.dog_watcher != nil && @current_homo_sapien.id == @the_appointment.dog_watcher.id %>
+
+<h2>
+Cancel your watch
+</h2>
+
+<div>
+Despite our best intentions to help, we know things come up. <a href="/cancel_watch/:path_id"</a> Click here to cancel your watch.
+</div>
+
+
+<% end %>

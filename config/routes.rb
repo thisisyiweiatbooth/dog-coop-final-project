@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get("/signup_to_watch/:path_id", { :controller => "appointments", :action => "signup_to_watch"})
   
+  get("/cancel_watch/:path_id", { :controller => "appointments", :action => "cancel_watch"})
+  
   # DELETE
   get("/delete_appointment/:path_id", { :controller => "appointments", :action => "destroy" })
 
