@@ -41,24 +41,29 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table class="table table-bordered table-hover">
+    <thead>
       <tr>
 
-        <th>
+        <th scope="col">
           Name
         </th>
 
-        <th>
+        <th scope="col">
           Photo
         </th>
 
-        <th>
+        <th scope="col">
           Owner
         </th>
 
-        <th>
+        <th scope="col">
+        More details
         </th>
       </tr>
+      </thead>
+
+      <tbody>
 
       <% @list_of_dogs.each do |a_dog| %>
       <tr>
@@ -75,12 +80,7 @@
           <%= a_dog.owner.username %>
         </td>
 
-        <td> 
-          <% time_ago_in_words(a_dog.created_at) %> 
-        </td>
-        <td>
-          <% time_ago_in_words(a_dog.updated_at) %>
-        </td>
+
 
         <td>
           <a href="/dogs/<%= a_dog.id %>">
@@ -89,6 +89,7 @@
         </td>
       </tr>
       <% end %>
+    </tbody>
     </table>
   </div>
 </div>

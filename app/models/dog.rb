@@ -21,9 +21,7 @@ class Dog < ApplicationRecord
 
   validates(:name, { :presence => true })
 
-  class Dog < ActiveRecord::Base
-    mount_uploader :photo, PhotoUploader
-  end
+  mount_uploader :photo, PhotoUploader
 
   def owner
     return HomoSapien.where({ :id => self.owner_id}).at(0)
@@ -31,3 +29,6 @@ class Dog < ApplicationRecord
   
 end
 
+# class Dog < ActiveRecord::Base
+
+# end
