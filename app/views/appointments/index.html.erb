@@ -127,11 +127,15 @@
 
         <td>
       <% if an_appointment.dog_watcher_id == nil %>
+      
+      <form action="/signup_to_watch/<%= an_appointment.id %>">
           
-      <button type="submit" action="/signup_to_watch/:path_id">
+      <button type="submit" >
         Sign up to watch!
 
       </button>
+
+      </form>
 
       <% else %>
 
