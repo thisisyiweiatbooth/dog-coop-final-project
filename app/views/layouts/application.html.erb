@@ -24,6 +24,15 @@
 <!-- Make it responsive to small screens -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<style>
+.footer {
+  background-color: #f1f1f1;
+  color: MediumSeaGreen;
+  padding: 10px;
+  text-align: center;
+}
+</style>
+
   </head>
 <div class="container">
   <!-- Content here -->
@@ -86,7 +95,12 @@
  
   </body>
 
-<div>
+
+
+
+
+<div class="footer">
+<p>
 
 <% if @current_homo_sapien != nil %>
 You are currently signed in as <%= @current_homo_sapien.username %>
@@ -96,6 +110,9 @@ You are currently signed in as <%= @current_homo_sapien.username %>
 You are currently not signed in.
 
 <% end %>
+</p>
 </div>
- </div>
+
+</div>
+
 </html>
