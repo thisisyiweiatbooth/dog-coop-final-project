@@ -25,15 +25,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   </head>
-
-  <body>
-
 <div class="container">
   <!-- Content here -->
+
+  <body>
 
 
 <%= notice %>
 <%= alert %>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Home</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/dogs">Dogs
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/appointments">Appointments</a>
+      </li>
+
+      <% if @current_homo_sapien == nil %>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/homo_sapien_sign_up">Sign up</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" href="/homo_sapien_sign_in">Sign in</a>
+    </li>
+  
+  <% else %>
+    <li class="nav-item">
+      <a class="nav-link" href="/edit_homo_sapien_profile">Edit user profile</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" href="/homo_sapien_sign_out">Sign out</a>
+    </li>
+  
+   <% end %>
+
+    </ul>
+</nav>
+
+<hr>
+  
+    <%= yield %>
+  
+ 
+  </body>
 
 <% if @current_homo_sapien != nil %>
 You are currently signed in as <%= @current_homo_sapien.username %>
@@ -43,45 +94,5 @@ You are currently signed in as <%= @current_homo_sapien.username %>
 You are currently not signed in.
 
 <% end %>
-
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-
-    <li>
-      <a href="/appointments">Appointments</a>
-    </li>
-
-    <li>
-      <a href="/dogs">Dogs</a>
-    </li>
-
-  <% if @current_homo_sapien == nil %>
-
-    <li>
-      <a href="/homo_sapien_sign_up">Sign up</a>
-    </li>
-    
-    <li>
-      <a href="/homo_sapien_sign_in">Sign in</a>
-    </li>
-  
-  <% else %>
-    <li>
-      <a href="/edit_homo_sapien_profile">Edit user profile</a>
-    </li>
-    
-    <li>
-      <a href="/homo_sapien_sign_out">Sign out</a>
-    </li>
-  
-  <% end %>
-
-
-  </ul>
-    <%= yield %>
-  
-  </div>
-  </body>
+ </div>
 </html>
