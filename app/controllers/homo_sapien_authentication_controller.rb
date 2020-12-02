@@ -51,9 +51,9 @@ class HomoSapienAuthenticationController < ApplicationController
     if save_status == true
       session[:homo_sapien_id] = @homo_sapien.id
    
-      redirect_to("/", { :notice => "Homo sapien account created successfully."})
+      redirect_to("/", { :notice => "User account created successfully."})
     else
-      redirect_to("/homo_sapien_sign_up", { :alert => "Homo sapien account failed to create successfully."})
+      redirect_to("/homo_sapien_sign_up", { :alert => "User account failed to create successfully."})
     end
   end
     
@@ -74,7 +74,7 @@ class HomoSapienAuthenticationController < ApplicationController
     if @homo_sapien.valid?
       @homo_sapien.save
 
-      redirect_to("/", { :notice => "Homo sapien account updated successfully."})
+      redirect_to("/", { :notice => "User account updated successfully."})
     else
       render({ :template => "homo_sapien_authentication/edit_profile_with_errors.html.erb" })
     end
@@ -84,7 +84,7 @@ class HomoSapienAuthenticationController < ApplicationController
     @current_homo_sapien.destroy
     reset_session
     
-    redirect_to("/", { :notice => "HomoSapien account cancelled" })
+    redirect_to("/", { :notice => "User account cancelled" })
   end
  
 end
