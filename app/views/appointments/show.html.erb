@@ -59,15 +59,15 @@
         <% if @the_appointment.dog_watcher != nil %>
         <%= @the_appointment.dog_watcher.username %>
 
-        <% elsif %>
-     
-        None yet! 
-
-        <% elsif @current_homo_sapien != @the_appointment.dog_owner.id %>
+        <% elsif @current_homo_sapien.id != @the_appointment.dog_owner.id %>
         
         <a href="/signup_to_watch/<%= @the_appointment.id %>">
         Sign up to watch.
         </a>
+
+        <% elsif %>
+     
+        None yet! 
 
         <% end %>
       </dd>
