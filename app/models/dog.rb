@@ -21,6 +21,8 @@ class Dog < ApplicationRecord
 
   validates(:name, { :presence => true })
 
+  validates(:photo, { :presence => true })
+
   mount_uploader :photo, PhotoUploader
 
   def owner

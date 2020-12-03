@@ -36,28 +36,28 @@ class DogsController < ApplicationController
     end
   end
 
-  if params.fetch(:photo) != nil
 
-    def update
-      the_id = params.fetch("path_id")
-      the_dog = Dog.where({ :id => the_id }).at(0)
 
-      the_dog.name = params.fetch("query_name")
-      the_dog.photo = params.fetch(:photo)
+  def update
+    the_id = params.fetch("path_id")
+    the_dog = Dog.where({ :id => the_id }).at(0)
 
-      if the_dog.valid?
-        the_dog.save
-        redirect_to("/dogs/#{the_dog.id}", { :notice => "Dog updated successfully."} )
-      else
-        redirect_to("/dogs/#{the_dog.id}", { :alert => "Dog failed to update successfully." })
-      end
-    end
+    the_dog.name = params.fetch("query_name")
+    the_dog.photo = params.fetch(:photo)
 
-  elsif params.fetch(:photo) == nil
-        p the_dog.errors.full_messages
+    if params.fetch(:photo) == nil
+      p the_dog.errors.full_messages
       redirect_to("/dogs/#{the_dog.id}", { :alert => "Dog failed to update successfully." })
+
+    elsif the_dog.valid?
+      the_dog.save
+      redirect_to("/dogs/#{the_dog.id}", { :notice => "Dog updated successfully."} )
+    else
+      p the_dog.errors.full_messages
+      redirect_to("/dogs/#{the_dog.id}", { :alert => "Dog failed to update successfully." })
+    end
   end
-  
+
   
 
   def destroy
