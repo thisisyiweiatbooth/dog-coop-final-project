@@ -45,11 +45,13 @@ class DogsController < ApplicationController
     the_dog.name = params.fetch("query_name")
     the_dog.photo = params.fetch(:photo)
 
-    if params.fetch(:photo) == nil
-      p the_dog.errors.full_messages
-      redirect_to("/dogs/#{the_dog.id}", { :alert => "Dog failed to update successfully." })
+    # if params.fetch(:photo) == nil
+    #   p the_dog.errors.full_messages
+    #   redirect_to("/dogs/#{the_dog.id}", { :alert => "Dog failed to update successfully." })
 
-    elsif the_dog.valid?
+    # elsif the_dog.valid?
+
+    if the_dog.valid?   
       the_dog.save
       redirect_to("/dogs/#{the_dog.id}", { :notice => "Dog updated successfully."} )
     else
