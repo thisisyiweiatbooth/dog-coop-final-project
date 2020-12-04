@@ -23,13 +23,13 @@ class AppointmentsController < ApplicationController
     the_appointment.end_date = params["query_end_date"]
     the_appointment.dog_id = params["query_dog_id"]
   
-    if params["query_start_date"] == nil || the_appointment.end_date = params["query_end_date"] == nil || the_appointment.dog_id = params["query_dog_id"] == nil
+    if params["query_start_date"] == nil || params["query_end_date"] == nil 
       redirect_to("/appointments", { :alert => "Appointment request failed to create successfully. Make sure you have selected a start date, end date, and a dog to be watched." })
     elsif the_appointment.valid?
       the_appointment.save
       redirect_to("/appointments", { :notice => "Appointment request created successfully." })
     else
-      redirect_to("/appointments", { :alert => "Appointment request failed to create successfully. Make sure you have selected a start date, end date, and a dog to be watched." })
+      redirect_to("/appointments", { :alert => "Appointment request failed to create successfully." })
     end
   end
 
