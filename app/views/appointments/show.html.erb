@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Appointment #<%= @the_appointment.id %> details
+      <%= @the_appointment.dog.name.capitalize %>'s Appointment Details
     </h1>
 
     <div>
@@ -28,14 +28,14 @@
         Start date
       </dt>
       <dd>
-        <%= @the_appointment.start_date %>
+        <%= @the_appointment.start_date.strftime("%b. %e, %Y %I:%M%P") %>
       </dd>
 
       <dt>
         End date
       </dt>
       <dd>
-        <%= @the_appointment.end_date %>
+        <%= @the_appointment.end_date.strftime("%b. %e, %Y %I:%M%P") %>
       </dd>
 
       <dt>
@@ -73,14 +73,14 @@
       </dd>
 
       <dt>
-        Created at
+        Created
       </dt>
       <dd>
         <%= time_ago_in_words(@the_appointment.created_at) %> ago
       </dd>
 
       <dt>
-        Updated at
+        Updated
       </dt>
       <dd>
         <%= time_ago_in_words(@the_appointment.updated_at) %> ago

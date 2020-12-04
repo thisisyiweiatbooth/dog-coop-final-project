@@ -19,22 +19,17 @@ class AppointmentsController < ApplicationController
 
   def create
     the_appointment = Appointment.new
-    the_appointment.start_date = params.fetch("query_start_date")
-    the_appointment.end_date = params.fetch("query_end_date")
-    the_appointment.dog_id = params.fetch("query_dog_id")
-    # appt_dog_name = params.fetch("query_dog_name")
-
-    # matching_dogs = Dog.where({ :name => appt_dog_name}).at(0)
-    # matching_dogs_id = matching_dogs.id
-
-    # the_appointment.dog_watcher_id = params.fetch("query_dog_watcher_id")
-    # the_appointment.points_earned = params.fetch("query_points_earned")
-
-    if the_appointment.valid?
+    the_appointment.start_date = params["query_start_date"]
+    the_appointment.end_date = params["query_end_date"]
+    the_appointment.dog_id = params["query_dog_id"]
+  
+    if params["query_start_date"] == nil || the_appointment.end_date = params["query_end_date"] == nil || the_appointment.dog_id = params["query_dog_id"] == nil
+      redirect_to("/appointments", { :alert => "Appointment request failed to create successfully. Make sure you have selected a start date, end date, and a dog to be watched." })
+    elsif the_appointment.valid?
       the_appointment.save
-      redirect_to("/appointments", { :notice => "Appointment created successfully." })
+      redirect_to("/appointments", { :notice => "Appointment request created successfully." })
     else
-      redirect_to("/appointments", { :notice => "Appointment failed to create successfully." })
+      redirect_to("/appointments", { :alert => "Appointment request failed to create successfully. Make sure you have selected a start date, end date, and a dog to be watched." })
     end
   end
 
@@ -49,9 +44,9 @@ class AppointmentsController < ApplicationController
 
     if the_appointment.valid?
       the_appointment.save
-      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment updated successfully."} )
+      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment request updated successfully."} )
     else
-      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
+      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment request failed to update successfully. Make sure you have selected a start date, end date, and a dog to be watched." })
     end
   end
 
@@ -62,7 +57,7 @@ class AppointmentsController < ApplicationController
 
     if the_appointment.valid?
       the_appointment.save
-      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment updated successfully."} )
+      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Thank you for helping to watch #{the_appointment.dog.name}!"} )
     else
       redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
     end
@@ -75,9 +70,9 @@ class AppointmentsController < ApplicationController
 
     if the_appointment.valid?
       the_appointment.save
-      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Appointment updated successfully."} )
+      redirect_to("/appointments/#{the_appointment.id}", { :notice => "Your watch has been successfully cancelled. Thanks for trying to help."} )
     else
-      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to update successfully." })
+      redirect_to("/appointments/#{the_appointment.id}", { :alert => "Appointment failed to cancel." })
     end
   end
 
