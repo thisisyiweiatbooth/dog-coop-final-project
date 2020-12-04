@@ -22,7 +22,7 @@ class HomoSapienAuthenticationController < ApplicationController
         redirect_to("/", { :notice => "Signed in successfully." })
       end
     else
-      redirect_to("/homo_sapien_sign_in", { :alert => "No homo_sapien with that email address." })
+      redirect_to("/homo_sapien_sign_in", { :alert => "No user with that email address." })
     end
   end
 
@@ -42,9 +42,7 @@ class HomoSapienAuthenticationController < ApplicationController
     @homo_sapien.password = params.fetch("query_password")
     @homo_sapien.password_confirmation = params.fetch("query_password_confirmation")
     @homo_sapien.username = params.fetch("query_username")
-    # @homo_sapien.net_points = params.fetch("query_net_points")
-    # @homo_sapien.dogs_count = params.fetch("query_dogs_count")
-    # @homo_sapien.appointments_count = params.fetch("query_appointments_count")
+
 
     save_status = @homo_sapien.save
 
@@ -53,7 +51,7 @@ class HomoSapienAuthenticationController < ApplicationController
    
       redirect_to("/", { :notice => "User account created successfully."})
     else
-      redirect_to("/homo_sapien_sign_up", { :alert => "User account failed to create successfully."})
+      redirect_to("/homo_sapien_sign_up", { :alert => "User account failed to create successfully. Please check you have entered all fields."})
     end
   end
     
